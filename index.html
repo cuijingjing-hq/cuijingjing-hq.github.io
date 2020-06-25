@@ -64,44 +64,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-查询" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/25/%E6%9F%A5%E8%AF%A2/" class="article-date">
-  <time datetime="2020-06-25T12:58:48.390Z" itemprop="datePublished">2020-06-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/25/%E6%9F%A5%E8%AF%A2/">查询</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span>  title</span><br><span class="line"><span class="keyword">from</span> course</span><br><span class="line"><span class="keyword">where</span>  dept_name=<span class="string">'Comp. Sci.'</span> <span class="keyword">and</span> credits=<span class="number">3</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">select</span>   <span class="keyword">distinct</span> takes.ID</span><br><span class="line"><span class="keyword">from</span>   (instructor <span class="keyword">natural</span> <span class="keyword">join</span> teaches) <span class="keyword">join</span> takes <span class="keyword">using</span> (course_ID)</span><br><span class="line"><span class="keyword">where</span>   instructor.name=<span class="string">'Einstein'</span> ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">max</span>(<span class="keyword">sum</span>(salary))<span class="keyword">as</span> max_salary</span><br><span class="line"><span class="keyword">from</span> instructor</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">name</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">name</span></span><br><span class="line"><span class="keyword">from</span> instructor</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">name</span></span><br><span class="line"><span class="keyword">having</span> <span class="keyword">sum</span>(salary)&gt;=<span class="keyword">all</span>(<span class="keyword">select</span> <span class="keyword">sum</span>(salary)</span><br><span class="line">                         <span class="keyword">from</span> instructor</span><br><span class="line">                         <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">name</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">select</span> time_slot_id,<span class="keyword">count</span>(<span class="keyword">ID</span>)    </span><br><span class="line"><span class="keyword">from</span>(</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">ID</span>,time_slot_id</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">section</span> <span class="keyword">natural</span> <span class="keyword">join</span> takes </span><br><span class="line"><span class="keyword">where</span>  semester	=<span class="string">'Fall'</span> <span class="keyword">and</span> <span class="keyword">year</span>=<span class="string">'2009'</span>)</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> time_slot_id;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">max</span>(<span class="keyword">count</span>(<span class="keyword">ID</span>))<span class="keyword">as</span> <span class="keyword">max</span>    </span><br><span class="line"><span class="keyword">from</span>(</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">ID</span>,time_slot_id</span><br><span class="line"><span class="keyword">from</span> <span class="keyword">section</span> <span class="keyword">natural</span> <span class="keyword">join</span> takes </span><br><span class="line"><span class="keyword">where</span>  semester	=<span class="string">'Fall'</span> <span class="keyword">and</span> <span class="keyword">year</span>=<span class="string">'2009'</span>)</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> time_slot_id;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"><span class="keyword">select</span> time_slot_id,<span class="keyword">count</span>(<span class="keyword">ID</span>)    </span><br><span class="line"><span class="keyword">from</span>(</span><br><span class="line">      <span class="keyword">select</span> <span class="keyword">ID</span>,time_slot_id</span><br><span class="line">      <span class="keyword">from</span> <span class="keyword">section</span> <span class="keyword">natural</span> <span class="keyword">join</span> takes </span><br><span class="line">      <span class="keyword">where</span>  semester	=<span class="string">'Fall'</span> <span class="keyword">and</span> <span class="keyword">year</span>=<span class="string">'2009'</span>)</span><br><span class="line">      <span class="keyword">group</span> <span class="keyword">by</span> time_slot_id</span><br><span class="line">      <span class="keyword">having</span>  <span class="keyword">count</span>(<span class="keyword">ID</span>)&gt;=<span class="keyword">all</span></span><br><span class="line">         （<span class="keyword">select</span> <span class="keyword">count</span>(<span class="keyword">ID</span>)    </span><br><span class="line">                  <span class="keyword">from</span>(</span><br><span class="line">                  <span class="keyword">select</span> <span class="keyword">ID</span>,time_slot_id</span><br><span class="line">                  <span class="keyword">from</span> <span class="keyword">section</span> <span class="keyword">natural</span> <span class="keyword">join</span> takes </span><br><span class="line">                  <span class="keyword">where</span>  semester	=<span class="string">'Fall'</span> <span class="keyword">and</span> <span class="keyword">year</span>=<span class="string">'2009'</span>)</span><br><span class="line">                   <span class="keyword">group</span> <span class="keyword">by</span> time_slot_id</span><br><span class="line">                       ）;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span>  <span class="keyword">distinct</span> <span class="keyword">name</span></span><br><span class="line"><span class="keyword">from</span> (<span class="keyword">select</span> <span class="keyword">name</span>,course_id</span><br><span class="line">       <span class="keyword">from</span> (course <span class="keyword">natural</span> <span class="keyword">join</span> takes)<span class="keyword">join</span> student <span class="keyword">using</span>(<span class="keyword">ID</span>)</span><br><span class="line">        <span class="keyword">where</span> course.dept_name=<span class="string">'Comp. Sci.'</span>)</span><br><span class="line">    <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">name</span></span><br><span class="line">    <span class="keyword">having</span> <span class="keyword">count</span>(course_id)&gt;=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> student. <span class="keyword">ID</span>,<span class="keyword">name</span></span><br><span class="line"><span class="keyword">from</span>  student</span><br><span class="line"><span class="keyword">where</span> student.ID <span class="keyword">in</span>(</span><br><span class="line">         <span class="keyword">select</span>  takes.ID</span><br><span class="line">         <span class="keyword">from</span> takes</span><br><span class="line">         <span class="keyword">where</span> <span class="keyword">year</span>&gt;=<span class="number">2009</span>                  </span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> dept_name,<span class="keyword">max</span>(sums)<span class="keyword">as</span> max_salary</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span>  instructor <span class="keyword">natural</span> <span class="keyword">join</span> </span><br><span class="line">(<span class="keyword">select</span> <span class="keyword">ID</span>,<span class="keyword">sum</span>(salary)<span class="keyword">as</span> sums</span><br><span class="line"> <span class="keyword">from</span> instructor</span><br><span class="line">  <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">ID</span>)</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> dept_name;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">min</span>(<span class="keyword">max</span>(sums)) <span class="keyword">as</span> min_salary</span><br><span class="line"><span class="keyword">from</span>  instructor <span class="keyword">natural</span> <span class="keyword">join</span> (</span><br><span class="line">    <span class="keyword">select</span> <span class="keyword">ID</span>,<span class="keyword">sum</span>(salary)<span class="keyword">as</span> sums</span><br><span class="line">     <span class="keyword">from</span> instructor</span><br><span class="line">     <span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">ID</span>)</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> dept_name;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://cuijingjing-hq.github.io/2020/06/25/%E6%9F%A5%E8%AF%A2/" data-id="ckbusupyc0000u4ui7sgr6sx9" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/03/24/hello-world/" class="article-date">
@@ -141,7 +103,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://cuijingjing-hq.github.io/2020/03/24/hello-world/" data-id="ckbusupyv0001u4ui7ti8c5m1" class="article-share-link">Share</a>
+      <a data-url="http://cuijingjing-hq.github.io/2020/03/24/hello-world/" data-id="ckbutkt5v0000lcuigva4bwik" class="article-share-link">Share</a>
       
       
     </footer>
@@ -169,7 +131,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li></ul>
     </div>
   </div>
 
@@ -180,10 +142,6 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2020/06/25/%E6%9F%A5%E8%AF%A2/">查询</a>
-          </li>
         
           <li>
             <a href="/2020/03/24/hello-world/">Hello World</a>
